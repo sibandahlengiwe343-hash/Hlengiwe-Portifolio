@@ -123,8 +123,14 @@ a { color: inherit; }
 .hero-facts dt { font: 400 2.1rem/1 var(--f-display); color: var(--green); }
 .hero-facts dd { margin: 0; font: 500 .7rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
 .portrait { position: relative; width: calc(100% - 24px); max-width: 420px; justify-self: center; margin: 12px; }
-.portrait::before { content: ""; position: absolute; inset: -12px; border: 2px solid var(--green-soft); border-radius: 50%; }
-.portrait .ph, .portrait > img { position: relative; border-radius: 50%; aspect-ratio: 1/1; object-fit: cover; object-position: 50% 50%; width: 100%; box-shadow: 0 0 0 6px var(--bg); }
+.portrait { perspective: 1000px; }
+.portrait .float { animation: float 6s ease-in-out infinite; }
+.portrait .tilt { position: relative; transform-style: preserve-3d; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease-out; will-change: transform; }
+.portrait .tilt::before { content: ""; position: absolute; inset: -12px; border: 2px solid var(--green-soft); border-radius: 50%; transform: translateZ(-45px); }
+.portrait .tilt::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; transform: translateZ(40px); background: radial-gradient(circle at var(--gx, 30%) var(--gy, 25%), rgba(255, 255, 255, .28), transparent 55%); opacity: var(--glare, .55); transition: opacity .3s; }
+.portrait .ph, .portrait img { position: relative; display: block; border-radius: 50%; aspect-ratio: 1/1; object-fit: cover; object-position: 50% 50%; width: 100%; transform: translateZ(20px); box-shadow: 0 0 0 6px var(--bg), 0 34px 50px -22px rgba(18, 38, 30, .55); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@media (prefers-reduced-motion: reduce) { .portrait .float { animation: none; } .portrait .tilt { transition: none; } }
 .portrait .ph::before, .portrait .ph::after { display: none; }
 .hero-grid.solo { grid-template-columns: minmax(0, 1fr); }
 .hero-grid.solo .intro { max-width: 36em; }
@@ -911,7 +917,24 @@ function renderProject(p) {
    ===================================================================== */
 function buildHome() {
   const portrait = $('#portrait');
-  if (CONFIG.portrait) portrait.innerHTML = media({ label: 'Portrait of Hlengiwe Sibanda', ratio: '1/1', src: CONFIG.portrait });
+  if (CONFIG.portrait) {
+    portrait.innerHTML = `<div class="float"><div class="tilt">${media({ label: 'Portrait of Hlengiwe Sibanda', ratio: '1/1', src: CONFIG.portrait })}</div></div>`;
+    /* 3D tilt that follows the mouse (skipped for touch screens and reduced-motion settings) */
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const tilt = portrait.querySelector('.tilt');
+      portrait.addEventListener('pointermove', e => {
+        if (e.pointerType === 'touch') return;
+        const r = portrait.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        tilt.style.setProperty('--ry', (x * 18).toFixed(1) + 'deg');
+        tilt.style.setProperty('--rx', (-y * 18).toFixed(1) + 'deg');
+        tilt.style.setProperty('--gx', ((x + .5) * 100).toFixed(0) + '%');
+        tilt.style.setProperty('--gy', ((y + .5) * 100).toFixed(0) + '%');
+        tilt.style.setProperty('--glare', '.9');
+      });
+      portrait.addEventListener('pointerleave', () => ['--rx', '--ry', '--gx', '--gy', '--glare'].forEach(p => tilt.style.removeProperty(p)));
+    }
+  }
   else { portrait.remove(); $('.hero-grid').classList.add('solo'); }
   $('#cards').innerHTML = PROJECTS.map(projectCard).join('');
   $('#certs').innerHTML = CERTS.map(certCard).join('');
