@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hlengiwe Sibanda Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Hlengiwe Sibanda, aspiring Junior Product Designer and Graphic Designer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a designer's proof sheet. Quiet serif-led pages on warm paper, with crop marks
+   and "Fig." captions on every image slot, and one green accent doing all the work. */
+:root {
+  --bg: #f5f2e9;
+  --surface: #ece7db;
+  --surface-2: #e2dccb;
+  --ink: #24272b;
+  --ink-2: #565b54;
+  --rule: #d8d2c3;
+  --green: #34604a;
+  --green-deep: #274a38;
+  --green-soft: #dce6da;
+  --f-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --nav-h: 68px;
+  --nav-bg: #244B3B;
+  --nav-logo: #F5F0E5;
+  --nav-link: #E8E8DC;
+  --gold: #D6B879;
+  --wrap: 1200px;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  background: var(--nav-bg); z-index: 60;
+}
+::selection { background: var(--green-soft); color: var(--ink); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 3px; }
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; }
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: var(--bg); padding: .6em 1em; z-index: 100; border-radius: 4px; }
+.skip:focus { left: 8px; }
+
+/* ---------- Type ---------- */
+.eyebrow { font: 500 .75rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin: 0 0 1.25rem; }
+.title { font: 400 clamp(2.25rem, 4.6vw, 3.6rem)/1.05 var(--f-display); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.lead { font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--ink-2); max-width: 36em; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .65em; padding: .9em 1.45em; min-height: 48px; border-radius: 6px;
+  font: 500 .95rem/1 var(--f-body); text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink);
+  background: transparent; cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+}
+.btn .arr { transition: transform .25s; }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-deep); border-color: var(--green-deep); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ---------- Navigation ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; }
+.nav::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--nav-bg); border-bottom: 1px solid rgba(214, 184, 121, .22); transition: box-shadow .3s; }
+.nav.scrolled::before { box-shadow: 0 10px 24px -14px rgba(18, 38, 30, .55); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); max-width: var(--wrap); margin-inline: auto; }
+.brand { font: 400 1.5rem/1 var(--f-display); text-decoration: none; letter-spacing: -.01em; color: var(--nav-logo); transition: color .25s; }
+.brand:hover { color: var(--gold); }
+.links { display: flex; gap: clamp(18px, 3vw, 40px); list-style: none; margin: 0; padding: 0; }
+.links a {
+  text-decoration: none; font: 500 .92rem/1 var(--f-body); padding: .6em 0; color: var(--nav-link);
+  background: linear-gradient(var(--gold), var(--gold)) left bottom / 0 2px no-repeat; transition: background-size .3s, color .2s;
+}
+.links a:hover { color: var(--nav-logo); background-size: 100% 2px; }
+.links a[aria-current="true"] { color: var(--nav-logo); background-size: 100% 2px; }
+.nav :focus-visible { outline-color: var(--gold); }
+.nav-in nav { position: static; }
+.menu-btn { margin-left: auto; display: none; min-height: 44px; font: 500 .9rem/1 var(--f-body); color: var(--nav-link); background: none; border: 1.5px solid rgba(232, 232, 220, .55); border-radius: 6px; padding: .6em 1.1em; cursor: pointer; transition: border-color .2s, color .2s; }
+.menu-btn:hover, .menu-btn[aria-expanded="true"] { border-color: var(--gold); color: var(--nav-logo); }
+@media (max-width: 760px) {
+  .menu-btn { display: inline-block; }
+  .links {
+    display: none; position: absolute; left: 0; right: 0; top: var(--nav-h); flex-direction: column; gap: 0;
+    background: var(--nav-bg); padding: 4px 0 14px; box-shadow: 0 0 0 100vmax var(--nav-bg); clip-path: inset(0 -100vmax -30px);
+    border-top: 1px solid rgba(232, 232, 220, .14);
+  }
+  .links.open { display: flex; }
+  .links li + li { border-top: 1px solid rgba(232, 232, 220, .1); }
+  .links a { display: flex; align-items: center; min-height: 52px; padding: 0 0 0 14px; font-size: 1.05rem; background: none; border-left: 3px solid transparent; }
+  .links a:hover { background: rgba(214, 184, 121, .08); }
+  .links a[aria-current="true"] { border-left-color: var(--gold); background: rgba(214, 184, 121, .1); }
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(36px, 6vw, 88px) clamp(56px, 8vw, 112px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 88px); align-items: center; }
+.hero h1 { font: 400 clamp(2.6rem, 6.4vw, 5.75rem)/1 var(--f-display); letter-spacing: -.02em; margin: 0 0 .3em; text-wrap: balance; }
+.hero h1 em { font-style: italic; color: var(--green); }
+.hero .sub { font: 500 clamp(1.1rem, 1.9vw, 1.4rem)/1.3 var(--f-body); margin: 0 0 1.25rem; }
+.hero .intro { color: var(--ink-2); font-size: 1.125rem; max-width: 33em; margin: 0 0 2rem; }
+.pill { display: inline-flex; align-items: center; gap: .6em; font: 500 .8rem/1.2 var(--f-body); color: var(--green-deep); background: var(--green-soft); padding: .6em 1em; border-radius: 999px; margin: 0 0 1.6rem; }
+.pill i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 18px clamp(28px, 4vw, 52px); margin: clamp(32px, 4vw, 48px) 0 0; padding: 22px 0 0; border-top: 1px solid var(--rule); max-width: 34em; }
+.hero-facts div { display: grid; gap: .45rem; }
+.hero-facts dt { font: 400 2.1rem/1 var(--f-display); color: var(--green); }
+.hero-facts dd { margin: 0; font: 500 .7rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.portrait { position: relative; width: calc(100% - 24px); max-width: 420px; justify-self: center; margin: 12px; }
+.portrait::before { content: ""; position: absolute; inset: -12px; border: 2px solid var(--green-soft); border-radius: 50%; }
+.portrait .ph, .portrait > img { position: relative; border-radius: 50%; aspect-ratio: 1/1; object-fit: cover; object-position: 50% 50%; width: 100%; box-shadow: 0 0 0 6px var(--bg); }
+.portrait .ph::before, .portrait .ph::after { display: none; }
+.hero-grid.solo { grid-template-columns: minmax(0, 1fr); }
+.hero-grid.solo .intro { max-width: 36em; }
+.hero-grid.solo h1 { font-size: clamp(3rem, 8.5vw, 7rem); }
+.rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+.rise.d1 { animation-delay: .08s; } .rise.d2 { animation-delay: .16s; } .rise.d3 { animation-delay: .24s; } .rise.d4 { animation-delay: .34s; }
+@keyframes rise { from { opacity: .35; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .portrait { justify-self: center; max-width: 360px; order: -1; }
+}
+@media (max-width: 520px) { .portrait { max-width: 300px; } .hero .btn-row .btn { flex: 1 1 100%; } }
+
+/* ---------- Sections ---------- */
+.sec { padding-block: clamp(72px, 10vw, 136px); border-top: 1px solid var(--rule); scroll-margin-top: var(--nav-h); }
+.reveal { opacity: .35; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); }
+.about-copy p { margin: 0 0 1.3em; max-width: 34em; font-size: 1.125rem; line-height: 1.75; color: #3d423d; }
+.about-copy p.big { font-size: clamp(1.25rem, 1.9vw, 1.5rem); line-height: 1.5; color: var(--ink); margin-bottom: 1.4em; }
+.about-copy p.sm { font-size: 1.02rem; line-height: 1.65; color: var(--ink-2); }
+.about-copy a { color: var(--green-deep); text-underline-offset: 3px; }
+.about-copy .btn { text-decoration: none; color: var(--ink); }
+.journey-block { margin-top: clamp(36px, 5vw, 56px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--rule); }
+.journey-block h3 { font: 400 clamp(1.75rem, 2.8vw, 2.25rem)/1.1 var(--f-display); margin: 0 0 .75rem; letter-spacing: -.01em; }
+.journey { --dw: 7.5rem; --gap: 2.25rem; position: relative; list-style: none; margin: 2rem 0 1.5rem; padding: 0; max-width: 40em; }
+.journey::before { content: ""; position: absolute; left: calc(var(--dw) + var(--gap) / 2 - .75px); top: .5em; bottom: .5em; width: 1.5px; background: var(--rule); }
+.journey li { position: relative; display: grid; grid-template-columns: var(--dw) minmax(0, 1fr); column-gap: var(--gap); padding-bottom: 2rem; }
+.journey li:last-child { padding-bottom: 0; }
+.journey li::before { content: ""; position: absolute; left: calc(var(--dw) + var(--gap) / 2 - 5.5px); top: .3em; width: 11px; height: 11px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px var(--bg); }
+.journey .when { font: 500 .75rem/1.5 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green-deep); padding-top: .15em; }
+.journey strong { display: block; font: 400 clamp(1.3rem, 2vw, 1.55rem)/1.2 var(--f-display); color: var(--ink); }
+.journey .by { display: block; color: var(--ink-2); font-size: 1rem; margin-top: .3rem; }
+.journey .meta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: .75rem; }
+.journey .kind { font: 500 .68rem/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green-deep); background: var(--green-soft); padding: .5em .75em; border-radius: 3px; }
+.journey .meta-row a { font-size: .92rem; font-weight: 500; }
+.about-copy .btn-row { margin-top: 2.25rem; }
+.about-side { align-self: start; }
+.glance { margin: 2.25rem 0 0; padding: 0; max-width: 22rem; border-top: 1px solid var(--rule); }
+.glance div { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.glance dt { font: 500 .72rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--green-deep); margin-bottom: .45rem; }
+.glance dd { margin: 0; font-size: 1.02rem; line-height: 1.5; color: #3d423d; }
+.about-side::after { content: ""; display: block; width: min(100%, 200px); aspect-ratio: 1; margin-top: 2.5rem; border-radius: 50%; border: 2px solid var(--green-soft); box-shadow: inset 0 0 0 16px var(--bg), inset 0 0 0 18px var(--green-soft); opacity: .9; }
+@media (min-width: 821px) { .about-side { position: sticky; top: calc(var(--nav-h) + 32px); } }
+@media (max-width: 820px) { .about-side::after { display: none; } .glance { max-width: none; margin-top: 1.5rem; } }
+@media (max-width: 560px) {
+  .journey { margin-left: 0; }
+  .journey::before { left: 4.75px; }
+  .journey li { display: block; padding-left: 30px; }
+  .journey li::before { left: 0; }
+  .journey .when { display: block; margin-bottom: .45rem; padding-top: 0; }
+}
+.cv-note { margin: 1rem 0 0; font-size: .95rem; color: var(--ink-2); min-height: 1.6em; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* Image slots */
+.ph {
+  position: relative; display: grid; place-content: center; gap: 8px; text-align: center; padding: 14px;
+  background: repeating-linear-gradient(135deg, var(--surface) 0 12px, var(--surface-2) 12px 13px);
+  color: var(--ink-2); border-radius: 4px; aspect-ratio: var(--r, 16/9); width: 100%;
+}
+.ph .k { font: 500 .7rem/1.2 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+.ph .l { font-size: .92rem; line-height: 1.35; }
+.ph::before, .ph::after { content: ""; position: absolute; width: 14px; height: 14px; border: 1.5px solid var(--ink-2); opacity: .6; pointer-events: none; }
+.ph::before { top: -7px; left: -7px; border-right: 0; border-bottom: 0; }
+.ph::after { bottom: -7px; right: -7px; border-left: 0; border-top: 0; }
+figure.fig { margin: 0; }
+figure.fig img { width: 100%; aspect-ratio: var(--r, 16/9); object-fit: cover; border-radius: 4px; }
+.fig.framed .zoom { background: var(--surface); padding: clamp(20px, 5vw, 56px); border-radius: 6px; }
+.fig.framed .zoom img { max-width: 440px; margin-inline: auto; border-radius: 3px; box-shadow: 0 1px 2px rgba(36,39,43,.12), 0 18px 40px -12px rgba(36,39,43,.28); }
+.zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 4px; }
+.zoom img { transition: opacity .25s; }
+.zoom:hover img { opacity: .92; }
+.cap { font: 400 .72rem/1.4 var(--f-mono); letter-spacing: .06em; color: var(--ink-2); margin-top: 12px; text-transform: uppercase; }
+
+/* Project showcase */
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: clamp(40px, 6vw, 72px); }
+.sec-head p.lead { margin: 0; }
+.proj { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; padding-block: clamp(48px, 6vw, 88px); border-top: 1px solid var(--rule); }
+.proj:first-child { border-top: 0; padding-top: 0; }
+.proj:last-child { padding-bottom: 0; }
+.proj:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); }
+.proj:nth-child(even) .proj-visual { order: 2; }
+.proj-visual { display: grid; gap: 14px; min-width: 0; text-decoration: none; color: inherit; }
+.thumb { overflow: hidden; border-radius: 6px; background: var(--surface); box-shadow: 0 1px 2px rgba(36,39,43,.08); transition: box-shadow .4s ease; }
+.thumb > * { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.thumb > img { width: 100%; aspect-ratio: var(--r); object-fit: cover; }
+.proj-visual:hover .thumb, .proj-visual:focus-visible .thumb { box-shadow: 0 18px 40px -18px rgba(36,39,43,.35); }
+.proj-visual:hover .thumb > *, .proj-visual:focus-visible .thumb > * { transform: scale(1.03); }
+.proj-thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.proj-copy { min-width: 0; }
+.proj-num { font: 400 clamp(3rem, 5vw, 4.25rem)/1 var(--f-display); color: var(--green); opacity: .5; margin: 0 0 1rem; }
+.proj .cat { font: 500 .8rem/1.4 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green-deep); margin: 0 0 .9rem; }
+.proj h3 { font: 400 clamp(2rem, 3.4vw, 2.75rem)/1.08 var(--f-display); letter-spacing: -.01em; margin: 0 0 1rem; text-wrap: balance; color: var(--ink); }
+.proj .sum { font-size: 1.125rem; line-height: 1.65; color: #3d423d; max-width: 28em; margin: 0 0 1.25rem; }
+.proj-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 1.5rem; padding: 0; }
+.proj-tags li { font: 500 .8rem/1 var(--f-body); border: 1.5px solid var(--rule); border-radius: 999px; padding: .55em .95em; color: var(--ink-2); }
+.soon { font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: -.4rem 0 1.5rem; }
+.proj .btn { transition: background .25s, color .25s, border-color .25s, transform .25s; }
+.proj .btn:hover { background: var(--green); border-color: var(--green); color: #fff; transform: translateY(-2px); }
+@media (max-width: 900px) {
+  .proj, .proj:nth-child(even) { grid-template-columns: 1fr; gap: 28px; }
+  .proj-visual, .proj:nth-child(even) .proj-visual { order: -1; }
+  .proj-num { margin-bottom: .6rem; }
+}
+@media (hover: none) { .proj-visual:hover .thumb > * { transform: none; } }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px clamp(32px, 4vw, 64px); align-items: start; margin-top: clamp(32px, 5vw, 56px); }
+.skill-groups { display: contents; }
+.skills-grid > div { min-width: 0; }
+.group-label { font: 500 .75rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--green-deep); margin: 0 0 .5rem; padding-bottom: 1rem; border-bottom: 1.5px solid var(--green); }
+.skill-list { list-style: none; margin: 0; padding: 0; }
+.skill-list li { display: flex; align-items: center; justify-content: space-between; gap: .8em; min-height: 58px; padding: .5rem 0; font-size: 1.05rem; color: var(--ink); border-bottom: 1px solid var(--rule); transition: padding-left .25s, color .25s; }
+.skill-list li span.n { display: inline-flex; align-items: center; gap: .8em; }
+.skill-list li span.n::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.skill-list li:hover { padding-left: 8px; color: var(--green-deep); }
+.lvl { font: 500 .68rem/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green-deep); background: var(--green-soft); padding: .5em .75em; border-radius: 3px; white-space: nowrap; }
+.tools { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: .75rem; }
+.tool { display: flex; align-items: center; gap: 1rem; min-height: 66px; padding: .8rem 1.1rem; background: var(--surface); border-radius: 6px; transition: background .25s, transform .25s; }
+.tool:hover { background: var(--green-soft); transform: translateY(-2px); }
+.tool .ico { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; background: var(--bg); color: var(--green); }
+.tool .ico svg { width: 22px; height: 22px; }
+.tool .txt { flex: 1; min-width: 0; }
+.tool strong { display: block; font: 400 1.4rem/1.15 var(--f-display); color: var(--ink); }
+.tool small { display: block; margin-top: .3rem; font: 500 .68rem/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green-deep); }
+@media (max-width: 1000px) {
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills-grid > .tools-col { grid-column: 1 / -1; }
+  .tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .tools { grid-template-columns: 1fr; }
+}
+
+.certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px) clamp(20px, 3vw, 40px); margin-top: clamp(32px, 5vw, 56px); }
+.cert { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.cert .zoom { background: var(--surface); padding: 12px; border-radius: 6px; transition: background .25s; }
+.cert .zoom:hover { background: var(--green-soft); }
+.cert .zoom img { border-radius: 2px; box-shadow: 0 1px 2px rgba(36,39,43,.12), 0 10px 24px -10px rgba(36,39,43,.3); }
+.cert h3 { font: 400 clamp(1.4rem, 2.2vw, 1.8rem)/1.15 var(--f-display); margin: 0; letter-spacing: -.01em; }
+.cert .by { margin: 0; color: var(--ink-2); font-size: .98rem; }
+.cert .row { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 2px; }
+.cert .when { font: 500 .72rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.cert .row a { font-weight: 500; font-size: .92rem; border-bottom: 1.5px solid var(--green); text-decoration: none; padding-bottom: 1px; }
+.cert .row a:hover { color: var(--green); }
+@media (max-width: 760px) { .certs { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 6vw, 96px); }
+.contact-grid .lead { margin: 1.25rem 0 0; }
+.reach { list-style: none; padding: 0; margin: 2rem 0 0; border-top: 1px solid var(--rule); }
+.reach li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.reach .k { display: flex; align-items: center; gap: .65rem; font: 500 .72rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.reach .ri { flex: none; width: 18px; height: 18px; color: var(--green); }
+.field .err { margin: 0; font-size: .88rem; line-height: 1.4; color: #9a3b2d; }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #9a3b2d; }
+.field input::placeholder, .field textarea::placeholder { color: #8a8d84; opacity: 1; }
+.form-note { margin: 0; font-size: .92rem; line-height: 1.5; color: var(--ink-2); }
+.status.ok { color: var(--green-deep); }
+.status.bad { color: #9a3b2d; }
+.reach .v { overflow-wrap: anywhere; font-weight: 500; text-decoration: none; }
+.contact-actions { margin-top: 1.75rem; }
+.reach a.v:hover { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+.mini { min-height: 40px; font: 500 .8rem/1 var(--f-body); background: none; border: 1.5px solid var(--rule); border-radius: 6px; padding: .55em .9em; color: var(--ink); cursor: pointer; transition: border-color .2s, background .2s; }
+.mini:hover { border-color: var(--green); background: var(--green-soft); }
+form.contact { display: grid; gap: 1.1rem; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+.field { display: grid; gap: .45rem; min-width: 0; }
+.field label { font: 500 .85rem/1 var(--f-body); }
+.field input, .field textarea {
+  font: inherit; color: var(--ink); background: #fbf9f4; border: 1.5px solid var(--rule); border-radius: 6px;
+  padding: .85em 1em; width: 100%; transition: border-color .2s, box-shadow .2s;
+}
+.field textarea { min-height: 150px; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+.status { margin: 0; min-height: 1.6em; font-size: .95rem; color: var(--ink-2); }
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .two { grid-template-columns: 1fr; } .reach li { grid-template-columns: 1fr auto; } .reach .k { grid-column: 1 / -1; } }
+
+/* Footer */
+.foot { border-top: 1px solid var(--rule); padding-block: 40px 56px; }
+.foot-in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 40px; align-items: flex-start; }
+.foot-side { display: grid; gap: 14px; justify-items: start; }
+@media (min-width: 761px) { .foot-side { justify-items: end; } }
+.foot p { margin: 0; }
+.foot .made { font: 400 1.35rem/1.2 var(--f-display); }
+.foot .copy { font-size: .88rem; color: var(--ink-2); margin-top: .5rem; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin: 0; padding: 0; }
+.foot-links a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--ink-2); }
+.foot-links a:hover { color: var(--green); }
+.socials { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin: 0; padding: 0; }
+.socials a { text-decoration: none; font-weight: 500; font-size: .95rem; border-bottom: 1.5px solid transparent; transition: border-color .2s, color .2s; }
+.socials a:hover { color: var(--green); border-color: var(--green); }
+
+/* ---------- Case study pages ---------- */
+.back { display: inline-flex; gap: .6em; padding-block: 28px 8px; text-decoration: none; color: var(--ink-2); font: 500 .78rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; }
+.back:hover { color: var(--green); }
+.cs-head { padding-block: clamp(16px, 3vw, 40px) clamp(40px, 6vw, 72px); }
+.cs-head h1 { font: 400 clamp(2.9rem, 7.4vw, 6rem)/1 var(--f-display); letter-spacing: -.02em; margin: 0 0 .35em; text-wrap: balance; }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px 28px; margin: 40px 0 0; padding: 22px 0; border-block: 1px solid var(--rule); }
+.meta dt { font: 500 .7rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); margin-bottom: .6rem; }
+.meta dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+.todo { color: var(--ink-2); font-weight: 400; font-style: italic; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip { min-height: 40px; font: 500 .82rem/1 var(--f-body); color: var(--ink); background: none; border: 1.5px solid var(--rule); border-radius: 999px; padding: .6em 1.05em; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
+.chip:hover { border-color: var(--green); background: var(--green-soft); }
+.cs-hero { margin-top: 8px; }
+.cs-sec { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 5vw, 72px); padding-block: clamp(48px, 7vw, 96px); border-top: 1px solid var(--rule); scroll-margin-top: calc(var(--nav-h) + 8px); }
+.cs-sec:first-of-type { margin-top: clamp(40px, 6vw, 80px); }
+.cs-side { position: sticky; top: calc(var(--nav-h) + 24px + env(safe-area-inset-top, 0px)); align-self: start; }
+.cs-side h2 { font: 400 clamp(1.8rem, 3vw, 2.4rem)/1.1 var(--f-display); margin: 0 0 1rem; letter-spacing: -.01em; }
+.statement { font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.6; max-width: 36em; margin: 0 0 1.25rem; }
+.statement:last-of-type { margin-bottom: 2.25rem; }
+.statement-list { list-style: none; margin: 0 0 1.25rem; padding: 0; max-width: 36em; border-top: 1px solid var(--rule); }
+.statement-list li { padding: .9rem 0; border-bottom: 1px solid var(--rule); font-size: clamp(1.05rem, 1.6vw, 1.2rem); line-height: 1.55; }
+.statement-list strong { display: block; font-family: var(--f-display); font-weight: 400; font-size: 1.35em; line-height: 1.2; margin-bottom: .15em; }
+.note { font-size: .98rem; color: var(--ink-2); margin: 0; }
+.tag { display: inline-block; font: 500 .66rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); background: var(--green-soft); padding: .45em .7em; border-radius: 3px; margin-bottom: .8rem; }
+.slots { display: grid; grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr)); gap: 28px 20px; }
+.swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.swatch .chipc { aspect-ratio: 3/4; border-radius: 4px; background: repeating-linear-gradient(135deg, var(--surface) 0 10px, var(--surface-2) 10px 11px); }
+.proto { margin-top: 20px; }
+.next { border-top: 1px solid var(--rule); margin-top: clamp(24px, 4vw, 48px); padding-block: clamp(56px, 8vw, 104px) 0; }
+.next a { display: block; text-decoration: none; }
+.next .eyebrow { margin-bottom: .8rem; }
+.next .nt { font: 400 clamp(2.4rem, 6vw, 4.5rem)/1.05 var(--f-display); letter-spacing: -.02em; display: inline-flex; gap: .3em; align-items: baseline; }
+.next .nt .arr { transition: transform .3s; color: var(--green); }
+.next a:hover .nt .arr { transform: translateX(10px); }
+.next a:hover .nt { color: var(--green); }
+.next-links { margin-top: 28px; }
+@media (max-width: 900px) {
+  .cs-sec { grid-template-columns: 1fr; }
+  .cs-side { position: static; }
+}
+@media (max-width: 700px) {
+  .slots { grid-template-columns: repeat(var(--cols-sm, var(--cols, 1)), minmax(0, 1fr)); gap: 24px 10px; }
+  .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .dense .ph .l { display: none; }
+  .dense .ph { padding: 6px; }
+  .dense .ph .k { font-size: .6rem; letter-spacing: .08em; }
+}
+.lb { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; background: rgba(28, 31, 29, .94);
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lb img { max-width: 100%; max-height: calc(100vh - 96px); width: auto; height: auto; object-fit: contain; border-radius: 4px; background: #fff; }
+.lb-x { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); font: 500 .9rem/1 var(--f-body); color: #fff; background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.5); border-radius: 6px; padding: .7em 1em; cursor: pointer; }
+.lb-x:hover { background: rgba(255,255,255,.22); }
+html.lb-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+
+<a class="skip" href="#" data-skip>Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="nav-in">
+    <a class="brand" href="#home">Hlengiwe Sibanda</a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="primary-links">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="links" id="primary-links">
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#projects" data-nav="projects">Projects</a></li>
+        <li><a href="#skills" data-nav="skills">Skills</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" style="outline:none">
+  <!-- ================= HOME ================= -->
+  <div id="view-home">
+    <section class="hero wrap" id="home">
+      <div class="hero-grid">
+        <div>
+          <p class="pill rise"><i aria-hidden="true"></i>Open to internships and junior design roles</p>
+          <h1 class="rise">Hi, I’m <em>Hlengiwe Sibanda.</em></h1>
+          <h2 class="sub rise d1">Product Designer &amp; Creative Thinker.</h2>
+          <p class="intro rise d2">I design meaningful digital experiences and visual solutions that connect creativity with problem-solving. My work spans UX/UI, branding, editorial, packaging and graphic design, and every project starts with the people it is for.</p>
+          <div class="btn-row rise d3">
+            <a class="btn btn-primary" href="#projects">View My Work <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#contact">Contact Me</a>
+          </div>
+          <dl class="hero-facts rise d3">
+            <div><dt id="fact-projects">6</dt><dd>Projects</dd></div>
+            <div><dt id="fact-certs">4</dt><dd>Certificates</dd></div>
+            <div><dt id="fact-tools">5</dt><dd>Design tools</dd></div>
+          </dl>
+        </div>
+        <div class="portrait rise d4" id="portrait"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="about">
+      <div class="wrap about-grid" data-reveal>
+        <div class="about-side">
+          <p class="eyebrow">About</p>
+          <h2 class="title">A Little About Me</h2>
+          <dl class="glance" id="glance"></dl>
+        </div>
+        <div class="about-copy">
+          <p class="big">I am an aspiring Product Designer with a strong interest in UX/UI and graphic design. I am drawn to design because it turns real problems into clear, usable solutions that make everyday life easier.</p>
+          <p>I enjoy understanding a problem first: who is affected, what they need and where the experience breaks down. From there I explore ideas and shape them through research, wireframes, layouts and prototypes into designs that are simple to use and pleasant to look at.</p>
+          <p>My design experience comes from building complete projects across different areas: a UX/UI concept for finding electricians (PowerConnect), a brand identity for Tree Lodge at Sikumi, an editorial magazine, luxury skincare packaging, and poster and social media designs. Each one has strengthened my skills in user-centred design, visual communication, typography and layout.</p>
+          <div class="journey-block">
+            <h3>My learning journey</h3>
+            <p class="sm">I am building my foundations through structured courses and by applying what I learn in my own projects.</p>
+            <ol class="journey" id="journey"></ol>
+            <p class="sm">I am continuously learning and improving. <a href="#certificates">See my certificates</a>.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-ghost" id="cv-btn" href="#about">Download My CV <span class="arr" aria-hidden="true">↓</span></a>
+          </div>
+          <p class="cv-note" id="cv-note" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="projects">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <div>
+            <p class="eyebrow">Featured projects</p>
+            <h2 class="title">My Creativity</h2>
+          </div>
+          <p class="lead">Six projects across product design, branding, packaging, editorial and graphic design. Each one opens as its own case study.</p>
+        </div>
+        <div class="showcase" id="cards"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="skills">
+      <div class="wrap">
+        <div data-reveal>
+          <p class="eyebrow">Skills</p>
+          <h2 class="title">What I work with</h2>
+        </div>
+        <div class="skills-grid" data-reveal>
+          <div class="skill-groups" id="skill-groups"></div>
+          <div class="tools-col">
+            <p class="group-label">Tools</p>
+            <div class="tools" id="tools"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="certificates">
+      <div class="wrap">
+        <div data-reveal>
+          <p class="eyebrow">Certificates</p>
+          <h2 class="title">Courses and certifications</h2>
+        </div>
+        <div class="certs" id="certs"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="contact">
+      <div class="wrap contact-grid" data-reveal>
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="title">Let’s Work Together.</h2>
+          <p class="lead">I am open to internships, junior design roles, collaborations and learning opportunities. If you have a project in mind, or would like to see more of my work, send me a message.</p>
+          <div class="btn-row contact-actions" id="contact-actions"></div>
+          <ul class="reach" id="reach"></ul>
+        </div>
+        <form class="contact" id="contact-form" novalidate>
+          <div class="two">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required aria-describedby="e-name"><p class="err" id="e-name" hidden></p></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="e-email"><p class="err" id="e-email" hidden></p></div>
+          </div>
+          <div class="field"><label for="f-subject">Subject</label><input id="f-subject" name="subject" type="text" placeholder="e.g. Internship opportunity or project enquiry" required aria-describedby="e-subject"><p class="err" id="e-subject" hidden></p></div>
+          <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" placeholder="Tell me about the role, project or idea you have in mind." required aria-describedby="e-message"></textarea><p class="err" id="e-message" hidden></p></div>
+          <p class="form-note" id="form-note"></p>
+          <div><button class="btn btn-primary" id="send-btn" type="submit"><span id="send-label">Send message</span> <span class="arr" aria-hidden="true">→</span></button></div>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= CASE STUDY (rendered from PROJECTS) ================= -->
+  <div id="view-project" hidden></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <p class="made">Designed with creativity by Hlengiwe Sibanda.</p>
+      <p class="copy">© <span id="year">2026</span> Hlengiwe Sibanda. All rights reserved.</p>
+    </div>
+    <div class="foot-side">
+      <ul class="foot-links" aria-label="Footer">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <ul class="socials" id="socials"></ul>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-x" type="button">Close</button>
+  <img alt="">
+</div>
+
+<script>
+/* =====================================================================
+   EDIT HERE. Everything you will want to change lives in this block.
+   - CONFIG: contact details, links, CV file, portrait photo, form endpoint.
+   - PROJECTS: text and images for each case study. To replace a placeholder,
+     put the image path (or URL) in that slot's `src`, for example
+     slot('Persona one', '4/5', 'images/persona-1.jpg').
+   ===================================================================== */
+const CONFIG = {
+  email: 'sibandahlengiwe343@gmail.com',
+  whatsapp: '0778413590',                                 // shown as text; add a country-code link once confirmed
+  linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/feed/foryou/' },
+  behance:  { label: 'behance.net/hlengiwesibanda', url: 'https://www.behance.net/hlengiwesibanda' },
+  socials: [                                              // add or remove links here
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/feed/foryou/' },
+    { label: 'Behance',  url: 'https://www.behance.net/hlengiwesibanda' }
+  ],
+  cvUrl: '',            // e.g. 'files/Hlengiwe-Sibanda-CV.pdf'
+  portrait: 'images/portrait.jpg',  // square photo shown in a round frame; set to '' to hide the portrait
+  formEndpoint: ''      // e.g. a Formspree or Netlify Forms URL, so the form can send mail
+};
+
+const CERTS = [
+  { title: 'Fundamentals of UI/UX Design', type: 'Course certificate', issuer: 'Microsoft, via Coursera', date: 'Oct 27, 2026', image: 'images/cert-ui-ux.jpg', ratio: '1650/1275', pdf: 'files/cert-ui-ux.pdf', verify: 'https://coursera.org/verify/AR3A263UT1RG' },
+  { title: 'Fundamentals of Graphic Design', type: 'Course certificate', issuer: 'California Institute of the Arts, via Coursera', date: 'Sep 21, 2026', image: 'images/cert-graphic.jpg', ratio: '1650/1275', pdf: 'files/cert-graphic.pdf', verify: 'https://coursera.org/verify/WD24QCV1MC21' },
+  { title: 'Product Designer Professional Certification', type: 'Professional certification', issuer: 'Uxcel', date: 'Jun 29, 2026', image: 'images/cert-product.jpg', ratio: '1756/1242', pdf: 'files/cert-product.pdf', verify: '' },
+  { title: 'AI Fundamentals for UX', type: 'Course certificate', issuer: 'Uxcel', date: 'Jun 10, 2026', image: 'images/cert-ai-ux.jpg', ratio: '1756/1242', pdf: 'files/cert-ai-ux.pdf', verify: '' }
+];
+
+const SKILLS = [
+  { group: 'Product design', items: ['User Interface Design', 'User Experience Design', 'User Research', 'Wireframing', 'Prototyping'] },
+  { group: 'Visual and graphic design', items: ['Branding', 'Typography', 'Layout Design', 'Packaging Design', 'Editorial Design', 'Poster and Social Media Design'] }
+];
+/* Skill levels are optional and left out on purpose. To show one, add level: 'Your level' to a tool below,
+   or write a skill as { name: 'Wireframing', level: 'Your level' } in SKILLS. Nothing shows until you add it. */
+const ICONS = {
+  interface: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>',
+  graphics: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-5 4 4 3-3 6 6"/>',
+  vector: '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M7 19c8 0 2-14 10-14"/>',
+  layout: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M6 9h3M6 13h3M15 9h3M15 13h3"/>',
+  image: '<path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="currentColor"/><circle cx="15" cy="12" r="2" fill="currentColor"/><circle cx="8" cy="17" r="2" fill="currentColor"/>'
+};
+const TOOLS = [
+  { name: 'Figma', use: 'Interface design', icon: 'interface' },   // optional: level: 'Beginner' (only add if it is true)
+  { name: 'Canva', use: 'Digital graphics', icon: 'graphics' },
+  { name: 'Affinity Designer', use: 'Vector design', icon: 'vector' },
+  { name: 'Affinity Publisher', use: 'Publication layout', icon: 'layout' },
+  { name: 'Adobe Photoshop', use: 'Image editing', icon: 'image' }
+];
+
+/* An image slot: label, aspect ratio, optional image path. */
+const slot = (label, ratio = '16/9', src = '') => ({ label, ratio, src });
+const PHONE = '12/25';   // aspect ratio used for phone screens
+
+const PROJECTS = [
+  {
+    slug: 'powerconnect',
+    title: 'PowerConnect',
+    category: 'UX/UI Product Design',
+    summary: 'A mobile app concept that helps people quickly find a reliable electrician when they have electricity problems.',
+    cover: slot('PowerConnect app screens', '3/2', 'images/powerconnect-cover.jpg'),
+    deliverables: 'User research, Personas, Wireframes, UI screens, Prototype',
+    gallery: [slot('PowerConnect log in screen', '1/1', 'images/powerconnect-ui-login.jpg'), slot('PowerConnect home screen', '1/1', 'images/powerconnect-ui-home.jpg'), slot('PowerConnect booking screen', '1/1', 'images/powerconnect-ui-booking.jpg')],
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'problem', title: 'Problem statement', note: '',
+        text: 'Many people in our communities experience unreliable electricity, which affects students, nurses and small business owners. Students struggle to attend online lessons and charge their devices, nurses face challenges keeping medical supplies that require refrigeration, and businesses lose customers and sales. When electricity problems occur, finding a reliable and qualified electrician can be difficult, especially during emergencies. This makes it hard for people to get quick assistance and continue with their daily activities.',
+        cols: 3, colsSm: 2, dense: true, slots: [slot('Problem statement screen', PHONE, 'images/powerconnect-problem.jpg')] },
+      { id: 'research', title: 'User research', note: '',
+        text: 'I gathered insights by identifying the challenges faced by students, nurses and small business owners due to unreliable electricity. I learned that power interruptions affect online learning, the storage of medical supplies and business operations. I also identified that finding a reliable electrician quickly is a major challenge, especially during emergencies.',
+        cols: 3, colsSm: 2, dense: true, slots: [slot('Research method and key findings', PHONE, 'images/powerconnect-research.jpg')] },
+      { id: 'personas', title: 'User personas', note: '', text: 'The user persona created for PowerConnect.',
+        cols: 3, colsSm: 2, dense: true, slots: [slot('Persona one', PHONE, 'images/powerconnect-persona.jpg')] },
+      { id: 'journey', title: 'User journey map', note: '', text: 'The user journey map for PowerConnect.',
+        cols: 3, colsSm: 2, dense: true, slots: [slot('User journey', PHONE, 'images/powerconnect-journey.jpg')] },
+      { id: 'ia', title: 'Information architecture', note: '', text: 'The sitemap, information architecture and screen flow for the PowerConnect app.',
+        cols: 1, slots: [{ ...slot('Sitemap, information architecture and screen flow', '424/600', 'images/powerconnect-sitemap-ia.jpg'), frame: true }] },
+      { id: 'wireframes', title: 'Wireframes', note: '', text: 'A wireframe screen for the PowerConnect app.',
+        cols: 3, dense: true, slots: [slot('Wireframe screen 1', PHONE, 'images/powerconnect-wireframe.jpg')] },
+      { id: 'style', title: 'Brand and style guide', note: '', text: 'The brand and style guide for PowerConnect.',
+        cols: 1, slots: [slot('PowerConnect brand and style guide', '3/2', 'images/powerconnect-style-guide.jpg')] },
+      { id: 'ui', title: 'UI designs', note: '', text: 'The final UI screens: log in, home and book an electrician.',
+        cols: 3, dense: true, slots: [slot('Log in screen', PHONE, 'images/powerconnect-ui-login.jpg'), slot('Home screen', PHONE, 'images/powerconnect-ui-home.jpg'), slot('Book an electrician screen', PHONE, 'images/powerconnect-ui-booking.jpg')] },
+      { id: 'prototype', title: 'Prototype', note: '', text: 'The splash screen, the find nearby electricians prototype screen and the request sent confirmation.',
+        cols: 3, dense: true, slots: [slot('Splash screen', PHONE, 'images/powerconnect-splash.jpg'), slot('Prototype: find nearby electricians', PHONE, 'images/powerconnect-prototype.jpg'), slot('Final result: request sent', PHONE, 'images/powerconnect-final.jpg')],
+        link: { label: 'Open prototype', url: '' } }
+    ]
+  },
+  {
+    slug: 'tree-lodge-at-sikumi',
+    title: 'Tree Lodge at Sikumi',
+    category: 'Branding and Visual Design',
+    summary: 'A brand identity for Tree Lodge at Sikumi in Zimbabwe, inspired by its wildlife, trees and green landscapes.',
+    cover: slot('Tree Lodge at Sikumi brand board', '1536/1024', 'images/tree-lodge-brand-board.jpg'),
+    deliverables: 'Logo, Colour palette, Typography, Posters, Social media, Print',
+    gallery: [slot('Tree Lodge at Sikumi logo', '1/1', 'images/tree-lodge-logo-1.jpg'), slot('Tree Lodge at Sikumi typography poster', '1/1', 'images/tree-lodge-typography-poster.jpg'), slot('Tree Lodge at Sikumi brochure', '1/1', 'images/tree-lodge-brochure.jpg')],
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'inspiration', title: 'Brand inspiration', note: '',
+        text: 'I was inspired by the natural beauty of Tree Lodge at Sikumi, particularly its connection to African wildlife, trees, green landscapes and peaceful surroundings. I wanted the brand to communicate nature, relaxation, adventure and comfort.\n\nThis inspiration influenced my choice of earthy colours such as forest green, olive green, brown and beige. I also used nature-inspired imagery, elegant typography and organic elements to create a visual identity that reflects the beauty of the African wilderness.\n\nMy goal was to create a brand that makes people feel connected to nature and encourages them to discover the beauty of the wild.',
+        cols: 1, slots: [slot('Brand inspiration board', '1500/2122', 'images/tree-lodge-inspiration-board.jpg')] },
+      { id: 'moodboard', title: 'Moodboard', note: '', text: 'The moodboard for the Tree Lodge at Sikumi brand.',
+        cols: 1, slots: [slot('Tree Lodge at Sikumi moodboard', '1920/1080', 'images/tree-lodge-moodboard.jpg')] },
+      { id: 'logo', title: 'Logo design', note: '',
+        text: 'I explored different logo concepts inspired by nature, trees, wildlife and the peaceful environment of Tree Lodge at Sikumi.\n\nI experimented with different shapes, symbols, typography and layouts to create a logo that represents the lodge\'s identity.\n\nAfter reviewing my concepts, I selected the strongest design because it communicates the connection between nature, accommodation and the African wilderness. The design aims to be simple, memorable and easy to recognise.\n\nI chose this logo because it reflects the personality of Tree Lodge at Sikumi and can be used across different brand materials, including posters, brochures, social media and signage.',
+        cols: 2, slots: [
+          slot('Logo option 1', '832/786', 'images/tree-lodge-logo-1.jpg'),
+          slot('Logo option 2', '832/786', 'images/tree-lodge-logo-2.jpg'),
+          slot('Logo option 3', '832/787', 'images/tree-lodge-logo-3.jpg'),
+          slot('Logo option 4', '832/787', 'images/tree-lodge-logo-4.jpg')
+        ] },
+      { id: 'colour', title: 'Colour palette', note: '',
+        text: 'The colour palette for Tree Lodge at Sikumi was inspired by the natural environment and beauty of the African wilderness.\n\nI selected forest green to represent trees and nature, while sage green reflects natural vegetation and creates a calm feeling. Earth beige represents the soil and sandy landscapes, and bark brown reflects tree trunks, wood and natural materials.\n\nTogether, these colours create a warm, natural and welcoming identity. They communicate relaxation, comfort and a strong connection with nature, reflecting the experience I wanted Tree Lodge at Sikumi to represent.',
+        colors: [
+          { name: 'Forest Green', hex: '#1B4D2E' },
+          { name: 'Olive Green',  hex: '#6B8F5B' },
+          { name: 'Sand Beige',   hex: '#D8C9A8' },
+          { name: 'Earth Brown',  hex: '#5A3E2B' },
+          { name: 'Sunset Gold',  hex: '#D9A441' }
+        ] },
+      { id: 'type', title: 'Typography', note: '',
+        text: 'I selected Playfair Display and Montserrat for the Tree Lodge at Sikumi brand identity.\n\nPlayfair Display is used for headings because its elegant and sophisticated appearance reflects the natural beauty and peaceful atmosphere of the lodge.\n\nMontserrat is used for body text because it is clean, modern and easy to read. It creates a good balance with the decorative heading typeface.\n\nTogether, these typefaces create a consistent visual identity that communicates elegance, comfort and a connection with nature.',
+        cols: 2, slots: [slot('Typography poster', '1400/1980', 'images/tree-lodge-typography-poster.jpg'), slot('Typography poster 2', '1400/1980', 'images/tree-lodge-typography-poster-2.jpg')] },
+      { id: 'posters', title: 'Posters', note: '', text: 'Posters designed for Tree Lodge at Sikumi, shown as mockups and as flat artwork.',
+        cols: 3, colsSm: 1, slots: [
+          slot('Nature isn’t just a place, on a table stand', '1400/1984', 'images/tree-lodge-poster-table.jpg'),
+          slot('Simple stays, bigger memories, in a frame', '1400/1984', 'images/tree-lodge-poster-frame.jpg'),
+          slot('Simple stays, bigger memories, flat artwork', '1400/1984', 'images/tree-lodge-poster-flat.jpg')
+        ] },
+      { id: 'social', title: 'Social media designs', note: '', text: 'Social media designs created for the Tree Lodge at Sikumi brand.',
+        cols: 3, colsSm: 1, slots: [
+          slot('Explore the beauty around you', '1400/1980', 'images/tree-lodge-social-safari.jpg'),
+          slot('More than a stay', '1400/1980', 'images/tree-lodge-social-stay.jpg'),
+          slot('Stay closer to nature', '1400/1980', 'images/tree-lodge-social-nature.jpg')
+        ] },
+      { id: 'print', title: 'Brochure and magazine designs', note: '', text: 'The brochure collection and magazine spread designed for the brand.',
+        cols: 1, slots: [slot('Brochure collection', '1312/1199', 'images/tree-lodge-brochure.jpg'), slot('Magazine spread', '1800/1273', 'images/tree-lodge-magazine-spread.jpg')] }
+    ]
+  },
+  {
+    slug: 'luxury-skincare-packaging',
+    title: 'Luxury Skincare Packaging',
+    category: 'Packaging Design',
+    summary: 'A luxury skincare packaging concept, from research and dieline development to 3D mockups.',
+    cover: slot('Radiant Glow skincare packaging', '1536/1024', 'images/skincare-radiant-glow.jpg'),
+    deliverables: 'Packaging research, Dieline, 3D mockup',
+    gallery: [slot('Radiant Glow cream box', '1/1', 'images/skincare-cream-box.jpg'), slot('Herbal soap box mockup', '1/1', 'images/skincare-soap-mockup.jpg'), slot('Herbal soap box dieline', '1/1', 'images/skincare-dieline-flat.jpg')],
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'research', title: 'Packaging research', note: '',
+        text: 'I researched different luxury skincare packaging designs to understand how premium products communicate quality, elegance and professionalism.\n\nI looked at minimalist packaging, colour combinations, typography, materials and finishing techniques. I noticed that luxury skincare brands often use simple layouts, elegant typography, neutral colours and high-quality materials to create a sophisticated appearance.\n\nMy research also showed me the importance of clear product information, consistent branding and attractive packaging that protects the product.\n\nFrom this research, I learned that successful luxury skincare packaging should be visually appealing, functional, easy to recognise and consistent with the brand identity. I used these ideas as inspiration for my own packaging design.',
+        cols: 3, colsSm: 1, slots: [slot('Radiant Glow cream box', '920/800', 'images/skincare-cream-box.jpg'), slot('Radiant Glow cream jar', '584/660', 'images/skincare-cream-jar.jpg'), slot('Reference: soap in paper wrapping', '1800/1200', 'images/skincare-soap-reference.jpg')] },
+      { id: 'dieline', title: 'Dieline development', note: '',
+        text: 'I developed a folding carton dieline for my luxury skincare packaging. The structure includes a front panel, back panel, two side panels, top and bottom flaps, and a glue tab.\n\nThe front panel displays the Tree Lodge-inspired brand identity, product name and logo. The back panel contains product information, while the side panels provide additional branding details.\n\nI considered the folding lines, cutting lines, panel alignment and glue area to ensure that the packaging could be folded and assembled correctly.\n\nThe design was developed to create a neat, strong and elegant package that protects the skincare product while communicating a premium brand experience.',
+        cols: 1, slots: [slot('Herbal soap box dieline', '1800/1200', 'images/skincare-dieline-flat.jpg')] },
+      { id: 'mockups', title: '3D mockups', note: '', text: 'The herbal soap box mockup shown alongside its dieline.',
+        cols: 1, slots: [slot('Herbal soap box mockup and dieline', '1536/1024', 'images/skincare-soap-mockup.jpg')] }
+    ]
+  },
+  {
+    slug: 'editorial-magazine-design',
+    title: 'Editorial Design',
+    category: 'Magazine and Publication Design',
+    summary: 'A travel magazine design covering inspiration, page grid, flatplan, editorial layouts and final spreads.',
+    cover: slot('Editorial magazine draft spreads', '1536/1024', 'images/editorial-magazine-draft.jpg'),
+    deliverables: 'Inspiration, Page grid, Flatplan, Editorial layouts, Magazine spreads',
+    gallery: [slot('Editorial layout: welcome and our lodge', '1/1', 'images/magazine-layout-1.jpg'), slot('Editorial layout: activities and facilities', '1/1', 'images/magazine-layout-2.jpg'), slot('Magazine flatplan', '1/1', 'images/magazine-flatplan.jpg')],
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'inspiration', title: 'Magazine inspiration', note: '',
+        text: 'I explored different travel and nature magazines to understand how professional publications use photography, typography and page layouts to tell stories.\n\n• National Geographic: Inspired me to use strong wildlife photography and bold headlines to capture attention.\n• Condé Nast Traveller: Inspired me to use elegant typography, clean layouts and attractive travel photography.\n• National Geographic Traveller: Inspired me to combine large landscape images with smaller supporting photographs and well-organised text.\n\nThese references helped me understand how to create an interesting editorial layout that communicates the beauty of nature, wildlife and travel while keeping the pages clear and visually appealing.',
+        cols: 2, colsSm: 1, slots: [
+          slot('Magazine inspiration 1', '1536/1024', 'images/magazine-inspiration-1.jpg'),
+          slot('Magazine inspiration 2', '1800/1273', 'images/magazine-inspiration-2.jpg'),
+          slot('Magazine inspiration 3', '1800/1385', 'images/magazine-inspiration-3.jpg'),
+          slot('Magazine inspiration 4', '1800/1273', 'images/magazine-inspiration-4.jpg')
+        ] },
+      { id: 'scale', title: 'Typography scale', note: '', text: 'The typographic scale and type guide for the magazine.',
+        cols: 1, slots: [{ ...slot('Typographic scale: magazine type guide', '1000/1460', 'images/magazine-typographic-scale.jpg'), frame: true }] },
+      { id: 'grid', title: 'Page grid, margins and columns', note: '',
+        text: 'I used a three-column grid to organise my magazine layouts and create consistency across the pages. The margins provide enough space around the content, while the columns help me position text, images and captions in an organised way.\n\nI used gutters to create clear spacing between columns and prevent the layout from looking crowded. The grid also helped me maintain alignment, balance and visual consistency throughout the magazine.\n\nOverall, the grid, margins and columns helped me create clean, structured and easy-to-read editorial pages.',
+        cols: 1, slots: [{ ...slot('Grid layout', '1400/1986', 'images/magazine-grid-post.jpg'), frame: true }] },
+      { id: 'flatplan', title: 'Flatplan', note: '',
+        text: 'I created a flatplan to organise the content and plan the flow of my four-page editorial design. It helped me decide where to place photographs, headings and body text before developing the final layouts.\n\nI used a Loud–Quiet–Loud approach to create visual rhythm. Page 1 introduces the story with a strong photograph and headline. Page 2 provides a quieter reading experience with text and supporting content. Page 3 brings attention back with a large wildlife photograph, while Page 4 concludes the story with supporting text and imagery.\n\nThe flatplan helped me maintain a balance between visual impact and readability throughout the magazine.',
+        cols: 1, slots: [{ ...slot('Flatplan: editorial flow', '1400/1980', 'images/magazine-flatplan.jpg'), frame: true }] },
+      { id: 'layouts', title: 'Editorial layouts', note: '',
+        text: 'I designed individual magazine pages using a clear visual hierarchy to guide readers through the content. I used large headings to introduce important topics, photographs to attract attention and body text to provide information.\n\nI created contrast between headings and body text by using different font sizes and weights. I also considered image placement, alignment, spacing and white space to keep the pages balanced and easy to read.\n\nEach page has a different purpose, but the layouts work together to create a consistent editorial style and an enjoyable reading experience.',
+        cols: 2, colsSm: 1, slots: [
+          slot('Editorial layout 1: welcome and our lodge', '1800/1273', 'images/magazine-layout-1.jpg'),
+          slot('Editorial layout 2: activities and facilities', '1800/1273', 'images/magazine-layout-2.jpg')
+        ] },
+      { id: 'spreads', title: 'Final magazine spreads', note: '', text: 'The final magazine spreads, shown as an overview and as a stacked mockup.',
+        cols: 1, slots: [
+          { ...slot('Magazine spread overview', '1800/1275', 'images/magazine-spreads-overview.jpg') },
+          { ...slot('Final spreads, stacked mockup', '1300/2600', 'images/magazine-spreads-stacked.jpg'), frame: true }
+        ] }
+    ]
+  },
+  {
+    slug: 'posters-and-billboards',
+    title: 'Posters and Billboards',
+    category: 'Graphic Design',
+    summary: 'Promotional poster designs for Tree Lodge at Sikumi, shown as mockups and flat artwork.',
+    cover: slot('Tree Lodge at Sikumi poster designs', '3/2', 'images/posters-cover.jpg'),
+    deliverables: 'Poster designs, Billboard designs',
+    gallery: [],
+    soon: 'Billboard designs coming soon',
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'posters', title: 'Poster designs', note: '',
+        text: 'Posters designed for Tree Lodge at Sikumi, shown as mockups and as flat artwork.',
+        cols: 3, colsSm: 1, slots: [
+          slot('Nature isn’t just a place, on a table stand', '1400/1984', 'images/tree-lodge-poster-table.jpg'),
+          slot('Simple stays, bigger memories, in a frame', '1400/1984', 'images/tree-lodge-poster-frame.jpg'),
+          slot('Simple stays, bigger memories, flat artwork', '1400/1984', 'images/tree-lodge-poster-flat.jpg')
+        ] },
+      { id: 'billboards', title: 'Billboard designs', note: '',
+        text: 'Billboard designs will be added here once they are finished.',
+        cols: 1, slots: [{ ...slot('Billboard designs', '3/1'), kind: 'Placeholder', hint: 'Billboard designs coming soon' }] }
+    ]
+  },
+  {
+    slug: 'social-media-designs',
+    title: 'Social Media Designs',
+    category: 'Social Media Design',
+    summary: 'Social media post designs for Tree Lodge at Sikumi that carry the brand through short, clear messages.',
+    cover: slot('Tree Lodge at Sikumi social media designs', '3/2', 'images/social-cover.jpg'),
+    deliverables: 'Social media post designs',
+    gallery: [],
+    meta: { role: '', tools: '', timeline: '' },
+    sections: [
+      { id: 'posts', title: 'Social media posts', note: '',
+        text: 'Social media designs created for the Tree Lodge at Sikumi brand.',
+        cols: 3, colsSm: 1, slots: [
+          slot('Explore the beauty around you', '1400/1980', 'images/tree-lodge-social-safari.jpg'),
+          slot('More than a stay', '1400/1980', 'images/tree-lodge-social-stay.jpg'),
+          slot('Stay closer to nature', '1400/1980', 'images/tree-lodge-social-nature.jpg')
+        ] }
+    ]
+  }
+];
+
+/* =====================================================================
+   Components
+   ===================================================================== */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* Text blocks: paragraphs split by a blank line; lines starting with "• " become a list ("Name: note" bolds the name) */
+function textBlocks(text) {
+  return text.split('\n\n').map(b => {
+    if (!b.startsWith('• ')) return `<p class="statement">${esc(b)}</p>`;
+    const li = b.split('\n').map(l => {
+      const t = l.replace(/^•\s*/, ''), k = t.indexOf(': ');
+      return k > 0 ? `<li><strong>${esc(t.slice(0, k))}</strong> ${esc(t.slice(k + 2))}</li>` : `<li>${esc(t)}</li>`;
+    }).join('');
+    return `<ul class="statement-list">${li}</ul>`;
+  }).join('');
+}
+
+/* Image or labelled placeholder */
+function media(s, kind = 'Image placeholder', hint = 'Add your design here') {
+  kind = s.kind || kind; hint = s.hint || hint;
+  const r = esc(s.ratio);
+  if (s.src) return `<img src="${esc(s.src)}" alt="${esc(s.label)}" loading="lazy" decoding="async" style="--r:${r}">`;
+  return `<div class="ph" role="img" aria-label="Placeholder: ${esc(s.label)}" style="--r:${r}"><span class="k">${esc(kind)}</span><span class="l">${esc(hint)}</span></div>`;
+}
+
+/* Image that opens larger in the viewer (placeholders stay plain) */
+function zoomable(s) {
+  if (!s.src) return media(s);
+  return `<button class="zoom" type="button" data-full="${esc(s.src)}" data-alt="${esc(s.label)}" aria-label="View larger: ${esc(s.label)}">${media(s)}</button>`;
+}
+
+function certCard(c) {
+  const img = zoomable({ label: c.title + ' certificate', ratio: c.ratio, src: c.image });
+  const links = [`<a href="${esc(c.pdf)}" target="_blank" rel="noopener">View PDF</a>`];
+  if (c.verify) links.push(`<a href="${esc(c.verify)}" target="_blank" rel="noopener">Verify online</a>`);
+  return `<article class="cert" data-reveal>${img}<div><h3>${esc(c.title)}</h3><p class="by">${esc(c.issuer)}</p></div><div class="row"><span class="when">${esc(c.date)}</span>${links.join('')}</div></article>`;
+}
+
+function projectCard(p, i) {
+  const n = String(i + 1).padStart(2, '0');
+  const thumbs = (p.gallery || []).map(g => `<div class="thumb"><img src="${esc(g.src)}" alt="${esc(g.label)}" loading="lazy" decoding="async" style="--r:1/1;object-position:50% 30%"></div>`).join('');
+  const tags = (p.deliverables || '').split(', ').filter(Boolean).map(t => `<li>${esc(t)}</li>`).join('');
+  return `<article class="proj" data-reveal>
+    <a class="proj-visual" href="#${p.slug}" aria-label="Open the ${esc(p.title)} case study">
+      <div class="thumb">${media({ ...p.cover, ratio: '3/2' })}</div>
+      ${thumbs ? `<div class="proj-thumbs">${thumbs}</div>` : ''}
+    </a>
+    <div class="proj-copy">
+      <p class="proj-num" aria-hidden="true">${n}</p>
+      <p class="cat">${esc(p.category)}</p>
+      <h3>${esc(p.title)}</h3>
+      <p class="sum">${esc(p.summary)}</p>
+      ${tags ? `<ul class="proj-tags" aria-label="Covers">${tags}</ul>` : ''}
+      ${p.soon ? `<p class="soon">${esc(p.soon)}</p>` : ''}
+      <a class="btn btn-ghost" href="#${p.slug}">View case study <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </article>`;
+}
+
+function metaItem(label, value) {
+  return value ? `<div><dt>${label}</dt><dd>${esc(value)}</dd></div>` : '';
+}
+
+function renderProject(p) {
+  let fig = 0;
+  const sections = p.sections.map(s => {
+    let body = '';
+    if (s.colors) {
+      body = `<div class="swatches">${s.colors.map(c => {
+        fig += 1;
+        const chip = c.hex ? `<div class="chipc" style="background:${esc(c.hex)}"></div>` : `<div class="chipc" role="img" aria-label="Placeholder: ${esc(c.name)}"></div>`;
+        return `<figure class="fig swatch">${chip}<figcaption class="cap">Fig. ${String(fig).padStart(2, '0')} · ${esc(c.name)}${c.hex ? ' · ' + esc(c.hex) : ' · add hex'}</figcaption></figure>`;
+      }).join('')}</div>`;
+    } else {
+      const figs = s.slots.map(sl => {
+        fig += 1;
+        return `<figure class="fig${sl.frame ? ' framed' : ''}"${sl.span ? ' style="grid-column:1/-1"' : ''}>${zoomable(sl)}<figcaption class="cap">Fig. ${String(fig).padStart(2, '0')} · ${esc(sl.label)}</figcaption></figure>`;
+      }).join('');
+      const sm = s.colsSm || s.cols;
+      body = `<div class="slots${s.dense ? ' dense' : ''}" style="--cols:${s.cols};--cols-sm:${sm}">${figs}</div>`;
+    }
+    if (s.link) {
+      body += s.link.url
+        ? `<p class="proto"><a class="btn btn-primary" href="${esc(s.link.url)}" target="_blank" rel="noopener">${esc(s.link.label)} <span class="arr" aria-hidden="true">↗</span></a></p>`
+        : '';
+    }
+    return `<section class="cs-sec" id="cs-${s.id}" data-reveal>
+      <div class="cs-side">${s.text ? '' : '<span class="tag">Edit this text</span>'}<h2>${esc(s.title)}</h2>${s.text ? '' : `<p class="note">${esc(s.note)}</p>`}</div>
+      <div>${s.text ? textBlocks(s.text) : ''}${body}</div>
+    </section>`;
+  }).join('');
+
+  const i = PROJECTS.indexOf(p);
+  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const chips = p.sections.map(s => `<button class="chip" type="button" data-scroll="cs-${s.id}">${esc(s.title)}</button>`).join('');
+
+  $('#view-project').innerHTML = `<div class="wrap">
+    <a class="back" href="#projects"><span aria-hidden="true">←</span> All projects</a>
+    <header class="cs-head">
+      <p class="eyebrow">${esc(p.category)}</p>
+      <h1 class="rise">${esc(p.title)}</h1>
+      <p class="lead rise d1">${esc(p.summary)}</p>
+      <dl class="meta rise d2">
+        ${metaItem('Category', p.category)}${metaItem('Covers', p.deliverables)}${metaItem('Role', p.meta.role)}${metaItem('Tools', p.meta.tools)}${metaItem('Timeline', p.meta.timeline)}
+      </dl>
+      <div class="chips" aria-label="Jump to a section">${chips}</div>
+    </header>
+    <div class="cs-hero rise d3"><figure class="fig">${zoomable(p.cover)}</figure></div>
+    ${sections}
+    <div class="next">
+      <a href="#${next.slug}">
+        <p class="eyebrow">Next project</p>
+        <span class="nt">${esc(next.title)} <span class="arr" aria-hidden="true">→</span></span>
+      </a>
+      <p class="next-links"><a class="btn btn-ghost" href="#projects">Back to all projects</a></p>
+    </div>
+  </div>`;
+  addReveals($('#view-project'));
+}
+
+/* =====================================================================
+   Page setup
+   ===================================================================== */
+function buildHome() {
+  const portrait = $('#portrait');
+  if (CONFIG.portrait) portrait.innerHTML = media({ label: 'Portrait of Hlengiwe Sibanda', ratio: '1/1', src: CONFIG.portrait });
+  else { portrait.remove(); $('.hero-grid').classList.add('solo'); }
+  $('#cards').innerHTML = PROJECTS.map(projectCard).join('');
+  $('#certs').innerHTML = CERTS.map(certCard).join('');
+  $('#skill-groups').innerHTML = SKILLS.map(g => `<div><p class="group-label">${esc(g.group)}</p><ul class="skill-list">${g.items.map(i => { const it = typeof i === 'string' ? { name: i } : i; return `<li><span class="n">${esc(it.name)}</span>${it.level ? `<span class="lvl">${esc(it.level)}</span>` : ''}</li>`; }).join('')}</ul></div>`).join('');
+  $('#tools').innerHTML = TOOLS.map(t => `<div class="tool"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[t.icon] || ''}</svg></span><div class="txt"><strong>${esc(t.name)}</strong><small>${esc(t.use)}</small></div>${t.level ? `<span class="lvl">${esc(t.level)}</span>` : ''}</div>`).join('');
+  $('#fact-projects').textContent = PROJECTS.length;
+  $('#fact-certs').textContent = CERTS.length;
+  $('#fact-tools').textContent = TOOLS.length;
+  $('#journey').innerHTML = [...CERTS].sort((a, b) => new Date(a.date) - new Date(b.date))
+    .map(c => `<li><span class="when">${esc(c.date)}</span><div><strong>${esc(c.title)}</strong><span class="by">${esc(c.issuer)}</span><div class="meta-row"><span class="kind">${esc(c.type)}</span>${c.verify ? `<a href="${esc(c.verify)}" target="_blank" rel="noopener">Verify online</a>` : ''}</div></div></li>`).join('');
+  $('#glance').innerHTML = [
+    ['Focus', 'Product design and graphic design'],
+    ['Projects', `${PROJECTS.length} case studies`],
+    ['Tools', TOOLS.map(t => t.name).join(', ')],
+    ['Certificates', `${CERTS.length} completed`]
+  ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  $('#contact-actions').innerHTML = `<a class="btn btn-primary" href="mailto:${esc(CONFIG.email)}?subject=${encodeURIComponent('Portfolio enquiry')}">Email me <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-ghost" href="${esc(CONFIG.behance.url)}" target="_blank" rel="noopener">View my Behance</a>`;
+  const ico = d => `<svg class="ri" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const RI = {
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    chat: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+    person: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/>',
+    grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'
+  };
+  $('#reach').innerHTML = `
+    <li><span class="k">${ico(RI.mail)}Email</span><a class="v" id="email-val" href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a><button class="mini" type="button" data-copy="${esc(CONFIG.email)}" data-from="email-val" aria-label="Copy email address">Copy</button></li>
+    <li><span class="k">${ico(RI.chat)}WhatsApp</span><a class="v" id="wa-val" href="tel:${esc(CONFIG.whatsapp.replace(/\s/g, ''))}">${esc(CONFIG.whatsapp)}</a><button class="mini" type="button" data-copy="${esc(CONFIG.whatsapp)}" data-from="wa-val" aria-label="Copy WhatsApp number">Copy</button></li>
+    <li><span class="k">${ico(RI.person)}LinkedIn</span><a class="v" href="${esc(CONFIG.linkedin.url)}" target="_blank" rel="noopener">${esc(CONFIG.linkedin.label)}</a><span></span></li>
+    <li><span class="k">${ico(RI.grid)}Behance</span><a class="v" href="${esc(CONFIG.behance.url)}" target="_blank" rel="noopener">${esc(CONFIG.behance.label)}</a><span></span></li>`;
+  $('#socials').innerHTML = CONFIG.socials.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join('');
+  $('#year').textContent = new Date().getFullYear();
+}
+
+/* ---------- Reveal on scroll (content stays visible if this never runs) ---------- */
+const io = 'IntersectionObserver' in window
+  ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' })
+  : null;
+function addReveals(root) {
+  if (!io) return;
+  $$('[data-reveal]', root).forEach(el => {
+    if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('reveal'); io.observe(el); }
+  });
+}
+
+/* ---------- Routing: #about etc. scroll the home page, #project-slug opens a case study ---------- */
+const SECTIONS = ['about', 'projects', 'skills', 'certificates', 'contact'];
+const views = { home: $('#view-home'), project: $('#view-project') };
+const nav = $('.nav');
+
+function setActive(id) {
+  $$('[data-nav]').forEach(a => a.setAttribute('aria-current', a.dataset.nav === id ? 'true' : 'false'));
+}
+function route(first) {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const p = PROJECTS.find(x => x.slug === id);
+  closeMenu(); closeLb();
+  if (p) {
+    renderProject(p);
+    views.home.hidden = true; views.project.hidden = false;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setActive('projects');
+    return;
+  }
+  const fromProject = !views.project.hidden;
+  views.project.hidden = true; views.home.hidden = false;
+  if (SECTIONS.includes(id)) {
+    $('#' + id).scrollIntoView({ behavior: fromProject || first ? 'instant' : 'smooth', block: 'start' });
+  } else if (fromProject || (!first && !id) || id === 'home') {
+    window.scrollTo({ top: 0, behavior: fromProject ? 'instant' : 'smooth' });
+  }
+  spy();
+}
+function spy() {
+  nav.classList.toggle('scrolled', scrollY > 8);
+  if (views.home.hidden) return;
+  const y = scrollY + innerHeight * 0.3;
+  let cur = 'home';
+  SECTIONS.forEach(id => { if ($('#' + id).getBoundingClientRect().top + scrollY <= y) cur = id; });
+  setActive(cur === 'certificates' ? 'skills' : cur);
+}
+let ticking = false;
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { spy(); ticking = false; }); } }, { passive: true });
+addEventListener('hashchange', () => route(false));
+
+/* ---------- Mobile menu ---------- */
+const menuBtn = $('#menu-btn'), links = $('#primary-links');
+function closeMenu() { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu'; }
+menuBtn.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.textContent = open ? 'Close' : 'Menu';
+});
+addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); closeLb(); } });
+
+/* ---------- Skip link, in-page section chips ---------- */
+document.addEventListener('click', e => {
+  const skip = e.target.closest('[data-skip]');
+  if (skip) { e.preventDefault(); $('#main').focus(); return; }
+  const chip = e.target.closest('[data-scroll]');
+  if (chip) { const el = document.getElementById(chip.dataset.scroll); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  /* Re-clicking the link for the page you are already on still scrolls */
+  const a = e.target.closest('a[href^="#"]');
+  if (a && a.getAttribute('href') === location.hash) route(false);
+});
+
+/* ---------- CV button ---------- */
+(function () {
+  const btn = $('#cv-btn'), note = $('#cv-note');
+  if (CONFIG.cvUrl) {
+    btn.href = CONFIG.cvUrl; btn.setAttribute('download', ''); btn.target = '_blank'; btn.rel = 'noopener';
+  } else {
+    btn.addEventListener('click', e => { e.preventDefault(); note.textContent = 'My CV is not available to download yet.'; });
+  }
+})();
+
+/* ---------- Copy buttons (email, WhatsApp) ---------- */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]');
+  if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copied'; }
+  catch (_) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById(b.dataset.from));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Press Ctrl+C';
+  }
+  setTimeout(() => { b.textContent = 'Copy'; }, 2200);
+});
+
+/* ---------- Contact form ---------- */
+const form = $('#contact-form'), formStatus = $('#form-status');
+const FIELDS = [
+  { id: 'name',    required: 'Please enter your name.' },
+  { id: 'email',   required: 'Please enter your email address.', invalid: 'Please enter a valid email address, like name@example.com.' },
+  { id: 'subject', required: 'Please add a subject.' },
+  { id: 'message', required: 'Please write a message.' }
+];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function setErr(f, text) {
+  const el = $('#f-' + f.id), out = $('#e-' + f.id);
+  out.textContent = text; out.hidden = !text;
+  el.setAttribute('aria-invalid', text ? 'true' : 'false');
+}
+function validateForm() {
+  let first = null;
+  FIELDS.forEach(f => {
+    const v = $('#f-' + f.id).value.trim();
+    let text = '';
+    if (!v) text = f.required;
+    else if (f.id === 'email' && !EMAIL_RE.test(v)) text = f.invalid;
+    setErr(f, text);
+    if (text && !first) first = $('#f-' + f.id);
+  });
+  if (first) first.focus();
+  return !first;
+}
+FIELDS.forEach(f => $('#f-' + f.id).addEventListener('input', () => { if (!$('#e-' + f.id).hidden) setErr(f, ''); }));
+/* Without a form service the form prepares an email in the visitor's own email app, and says so honestly. */
+$('#form-note').textContent = CONFIG.formEndpoint ? '' : 'This form opens your email app with your message ready to send. Nothing is sent until you press send there.';
+$('#send-label').textContent = CONFIG.formEndpoint ? 'Send message' : 'Write in my email app';
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  formStatus.className = 'status'; formStatus.textContent = '';
+  if (!validateForm()) { formStatus.className = 'status bad'; formStatus.textContent = 'Please check the highlighted fields.'; return; }
+  const d = new FormData(form);
+  if (!CONFIG.formEndpoint) {
+    const body = `${d.get('message')}\n\nFrom: ${d.get('name')} (${d.get('email')})`;
+    formStatus.className = 'status ok';
+    formStatus.textContent = `Your email app should now open with your message ready. Nothing has been sent yet. If it does not open, please email me at ${CONFIG.email}.`;
+    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(d.get('subject'))}&body=${encodeURIComponent(body)}`;
+    return;
+  }
+  formStatus.textContent = 'Sending…';
+  try {
+    const res = await fetch(CONFIG.formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: d });
+    if (!res.ok) throw new Error('bad response');
+    form.reset();
+    formStatus.className = 'status ok';
+    formStatus.textContent = 'Thank you. Your message has been sent and I will reply soon.';
+  } catch (_) {
+    formStatus.className = 'status bad';
+    formStatus.textContent = `Something went wrong sending your message. Please email me at ${CONFIG.email}.`;
+  }
+});
+
+/* ---------- Image viewer ---------- */
+const lb = $('#lb'), lbImg = $('img', lb);
+let lbFrom = null;
+function openLb(btn) {
+  lbFrom = btn; lbImg.src = btn.dataset.full; lbImg.alt = btn.dataset.alt;
+  lb.hidden = false; document.documentElement.classList.add('lb-open'); $('.lb-x', lb).focus();
+}
+function closeLb() {
+  if (lb.hidden) return;
+  lb.hidden = true; lbImg.removeAttribute('src'); document.documentElement.classList.remove('lb-open');
+  if (lbFrom && document.contains(lbFrom)) lbFrom.focus();
+}
+document.addEventListener('click', e => {
+  const z = e.target.closest('.zoom');
+  if (z) { openLb(z); return; }
+  if (!lb.hidden && (e.target === lb || e.target.closest('.lb-x'))) closeLb();
+});
+
+/* ---------- Go ---------- */
+buildHome();
+addReveals(views.home);
+route(true);
+</script>
