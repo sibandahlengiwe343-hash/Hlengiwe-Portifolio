@@ -208,6 +208,21 @@ figure.fig img { width: 100%; aspect-ratio: var(--r, 16/9); object-fit: cover; b
 .zoom:hover img { opacity: .92; }
 .cap { font: 400 .72rem/1.4 var(--f-mono); letter-spacing: .06em; color: var(--ink-2); margin-top: 12px; text-transform: uppercase; }
 
+/* Projects banner */
+.sec-projects { padding-top: 0; border-top: 0; }
+.proj-banner { position: relative; isolation: isolate; padding-block: clamp(56px, 8vw, 104px); margin-bottom: clamp(48px, 7vw, 88px); color: var(--nav-logo); }
+.proj-banner::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--nav-bg); border-bottom: 1px solid rgba(214, 184, 121, .3); }
+.pb-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px clamp(32px, 6vw, 88px); align-items: end; }
+.proj-banner .eyebrow { color: var(--gold); }
+.proj-banner .title { color: var(--nav-logo); margin-bottom: 1.25rem; }
+.pb-lead { margin: 0; max-width: 30em; font-size: 1.125rem; line-height: 1.65; color: var(--nav-link); }
+.pb-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; border-top: 1px solid rgba(232, 232, 220, .22); counter-reset: pb; }
+.pb-list a { display: flex; align-items: baseline; gap: .85rem; min-height: 52px; padding: .9rem 0; border-bottom: 1px solid rgba(232, 232, 220, .22); color: var(--nav-link); text-decoration: none; font-size: 1rem; transition: color .2s, padding-left .25s; }
+.pb-list a span { flex: none; font: 500 .72rem/1 var(--f-mono); letter-spacing: .1em; color: var(--gold); }
+.pb-list a:hover, .pb-list a:focus-visible { color: var(--nav-logo); padding-left: 8px; }
+@media (max-width: 900px) { .pb-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .pb-list { grid-template-columns: 1fr; } }
+
 /* Project showcase */
 .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: clamp(40px, 6vw, 72px); }
 .sec-head p.lead { margin: 0; }
@@ -457,15 +472,18 @@ html.lb-open { overflow: hidden; }
       </div>
     </section>
 
-    <section class="sec" id="projects">
-      <div class="wrap">
-        <div class="sec-head" data-reveal>
+    <section class="sec sec-projects" id="projects">
+      <div class="proj-banner">
+        <div class="wrap pb-grid" data-reveal>
           <div>
             <p class="eyebrow">Featured projects</p>
             <h2 class="title">My Creativity</h2>
+            <p class="pb-lead">Six projects across product design, branding, packaging, editorial and graphic design. Each one opens as its own case study.</p>
           </div>
-          <p class="lead">Six projects across product design, branding, packaging, editorial and graphic design. Each one opens as its own case study.</p>
+          <ol class="pb-list" id="pb-list" aria-label="Open a case study"></ol>
         </div>
+      </div>
+      <div class="wrap">
         <div class="showcase" id="cards"></div>
       </div>
     </section>
@@ -753,7 +771,7 @@ const PROJECTS = [
     summary: 'Promotional poster designs for Tree Lodge at Sikumi, shown as mockups and flat artwork.',
     cover: slot('Tree Lodge at Sikumi poster designs', '3/2', 'images/posters-cover.jpg'),
     deliverables: 'Poster designs, Billboard designs',
-    gallery: [],
+    gallery: [slot('Poster: Nature isn’t just a place', '1/1', 'images/tree-lodge-poster-table.jpg'), slot('Poster: Simple stays, bigger memories', '1/1', 'images/tree-lodge-poster-frame.jpg'), slot('Poster: Simple stays, flat artwork', '1/1', 'images/tree-lodge-poster-flat.jpg')],
     soon: 'Billboard designs coming soon',
     meta: { role: '', tools: '', timeline: '' },
     sections: [
@@ -776,7 +794,7 @@ const PROJECTS = [
     summary: 'Social media post designs for Tree Lodge at Sikumi that carry the brand through short, clear messages.',
     cover: slot('Tree Lodge at Sikumi social media designs', '3/2', 'images/social-cover.jpg'),
     deliverables: 'Social media post designs',
-    gallery: [],
+    gallery: [slot('Social post: Explore the beauty around you', '1/1', 'images/tree-lodge-social-safari.jpg'), slot('Social post: More than a stay', '1/1', 'images/tree-lodge-social-stay.jpg'), slot('Social post: Stay closer to nature', '1/1', 'images/tree-lodge-social-nature.jpg')],
     meta: { role: '', tools: '', timeline: '' },
     sections: [
       { id: 'posts', title: 'Social media posts', note: '',
@@ -940,6 +958,7 @@ function buildHome() {
   $('#certs').innerHTML = CERTS.map(certCard).join('');
   $('#skill-groups').innerHTML = SKILLS.map(g => `<div><p class="group-label">${esc(g.group)}</p><ul class="skill-list">${g.items.map(i => { const it = typeof i === 'string' ? { name: i } : i; return `<li><span class="n">${esc(it.name)}</span>${it.level ? `<span class="lvl">${esc(it.level)}</span>` : ''}</li>`; }).join('')}</ul></div>`).join('');
   $('#tools').innerHTML = TOOLS.map(t => `<div class="tool"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[t.icon] || ''}</svg></span><div class="txt"><strong>${esc(t.name)}</strong><small>${esc(t.use)}</small></div>${t.level ? `<span class="lvl">${esc(t.level)}</span>` : ''}</div>`).join('');
+  $('#pb-list').innerHTML = PROJECTS.map((p, i) => `<li><a href="#${p.slug}"><span>${String(i + 1).padStart(2, '0')}</span>${esc(p.title)}</a></li>`).join('');
   $('#fact-projects').textContent = PROJECTS.length;
   $('#fact-certs').textContent = CERTS.length;
   $('#fact-tools').textContent = TOOLS.length;
